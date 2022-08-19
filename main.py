@@ -19,6 +19,9 @@ def downloadFile(dat):
 
 
 if __name__ == "__main__":
+    if not os.path.isfile(INPUT_FILENAME):
+        exit(f"Input file: {INPUT_FILENAME} was not found. Exiting...")
+
     urls = []
 
     with open(INPUT_FILENAME, encoding="utf8") as inputFile:
@@ -40,9 +43,6 @@ if __name__ == "__main__":
     fileCount = len(urls)
     if fileCount == 0:
         exit("No attachments were found. Exiting...")
-
-    if not os.path.isfile(INPUT_FILENAME):
-        exit(f"{INPUT_FILENAME} was not found. Exiting...")
 
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
